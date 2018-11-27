@@ -50,9 +50,40 @@ We will be working with the RPi 3 Model B which is based around a 1.2 GHz 64-bit
 ## Physical layout of Raspberry Pi
 
 <p align="center">
-    <img src="images/RPI3Blayout.jpg" alt="The Raspberry Pi (version 3)" width="600">
+    <img src="images/RPI3Blayout.jpeg" alt="The Raspberry Pi (version 3)" width="600">
     <figcaption align="center">Raspberry Pi Layout</figcaption>
 </p>
 
 The above picture shows a Raspberry Pi 3. On the right-hand side, you have four **USB ports** and one **Ethernet** port. Next to the USB ports, there is a **USB/Ethernet Controller**, which translates data between the ports and the main processor, because the processor itself doesn't understand the USB or Ethernet protocol. At the top, you can find the **General Purpose Input/Output (GPIO) pins** (40 of them to be precise). Down the bottom middle is the **CSI (Camera Serial Interface) connector**, which allows you to connect mobile-phone-style cameras directly to the Pi. Of course, you also have the option to connect a webcam via USB. At the right-hand side, you can find a **DSI (Display Serial Interface) connector** that you can use to connect an LCD screen. At the bottom, you can find the **HDMI port**, which allows you to connect the Pi straight into a monitor. Next to this port, you can see the **USB power connector** and also an **audio port**. The back side of the Pi houses a micro SD card slot for the SD card containing the operating system and user data – just like a classical hard disk.
+
+## Important Note
+
+Before we continue, please be aware of the following limitations when using your Raspberry Pi.
+
+* Always make sure you supply only 5V to the RPi.
+* Unlike Arduino, RPi does not have over-voltage protection on the board (yet), so be careful when making GPIO connections.
+* Never connect more than a potential difference of 3.3V to the GPIO pins (for example, when using sensors to feed data into the Pi).
+* Never demand that any GPIO pin source or sink more than 16mA.
+* Pins can only supply a maximum current of 50mA.
+
+During this workshop, if you are unsure about connecting something new to your Raspberry Pi (particularly anything feeding a voltage or a current into it), do come and ask one of us mentors first – it might prevent your board from frying! Let us now consider what we _can_ do with those pins!
+
+## General Purpose I/O Pins (GPIO)
+
+Your Raspberry Pi is more than just a small computer; it is a hardware prototyping tool! The RPi has **bi-directional I/O pins**, which you can use to drive LEDs, spin motors, or read button presses. Using these pins requires a bit or programming. While you can use a [variety of programming languages](http://elinux.org/RPi_Low-level_peripherals#GPIO_Code_examples) to \"do\" GPIO, we will use a reliable, easy-to-use language throughout this hackathon: **Python**.
+
+###  GPIO Pinout
+
+As we saw above, the GPIO is arranged as a header of 40 electrical pins, which makes it easy to connect it with an external circuit, using jumper wires.
+
+<p align="center">
+    <img src="images/rpi_new_pin.jpg" alt="The Raspberry Pi (version 3)" width="600">
+    <figcaption align="center">Raspberry Pi GPIO Orientation</figcaption>
+</p>
+
+<p align="center">
+    <img src="images/RPi_pin_layout.svg" alt="The Raspberry Pi (version 3)" width="600">
+    <figcaption align="center">Raspberry Pi GPIO Layout</figcaption>
+</p>
+
 
