@@ -82,8 +82,10 @@ As we saw above, the GPIO is arranged as a header of 40 electrical pins, which m
 </p>
 
 <p align="center">
-    <img src="images/RPi_pin_layout.svg" alt="The Raspberry Pi (version 3)" width="300">
+    <img src="images/RPi_pin_layout.svg" alt="The Raspberry Pi (version 3)" width="200">
     <figcaption align="center">Raspberry Pi GPIO Layout</figcaption>
 </p>
+
+The image also shows the additional data protocols that can be accessed through some of the GPIO pins: [Serial (UART)](https://learn.sparkfun.com/tutorials/serial-communication), [I2C](https://learn.sparkfun.com/tutorials/i2c), [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi), Pulse width modulation ([PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation). We will actually use the I2C protocol to control an external circuit board for DC motors later.
 
 
