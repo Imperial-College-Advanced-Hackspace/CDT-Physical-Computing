@@ -88,4 +88,141 @@ As we saw above, the GPIO is arranged as a header of 40 electrical pins, which m
 
 The image also shows the additional data protocols that can be accessed through some of the GPIO pins: [Serial (UART)](https://learn.sparkfun.com/tutorials/serial-communication), [I2C](https://learn.sparkfun.com/tutorials/i2c), [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi), Pulse width modulation ([PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation). We will actually use the I2C protocol to control an external circuit board for DC motors later.
 
+# The tools of the trade - the Linux terminal, a code editor and SSH
+
+But how about (a) writing, and (b) executing Python programs on the Rasberry Pi?
+
+For writing programs, we suggest using **Geany**, which is one of the pre-installed code editors on your Raspberry Pi. It has the handy feature that it highlights (i.e., colour-annotates) our programs as we write them, which helps a lot with their readability.
+
+You find Geany in the Programming menu, as shown in the following picture.
+
+<p align="center">
+    <img src="images/Geany_menu_item.png" alt="Geany menue item" width="800">
+    <figcaption align="center">Opening the Geany script editor</figcaption>
+</p>
+
+The user interface is rather self-explanatory, with commands like CTRL+S (save), CTRL+O (open a file) etc. working as expected. It looks like shown below. Note that the program text has been coloured automatically.
+
+<p align="center">
+    <img src="images/Geany_window.png" alt="Geany window" width="800">
+    <figcaption align="center">The Geany user interface</figcaption>
+</p>
+
+Alternatively you can create the programs on your own laptop and copy them over to the raspberry pi over SSH (Secure Socket Shell). For our sessions we will use repl.it which is an online IDE that can interpret and compile your code. Using this we do not have to worry about what operating system we are on and installing any new software. Simply write the code online, download it and copy it across as shown below.
+
+But how to actually run the program, so the computer can do what we ask it to do? That's where the Linux terminal comes in handy. Look again at the main menu bar in the Figure above. The terminal is the black symbol with <kbd>**>\_**</kbd> in it, at the top of the screen. Once you've clicked on it, the below window appears.
+
+<p align="center">
+    <img src="images/Terminal_window.png" alt="The Linux terminal" width="600">
+    <figcaption align="center">The Linux terminal</figcaption>
+</p>
+
+We will show you how you can run a program from within the Terminal. The most important Terminal commands are listed in the table below.
+
+| Command       | Effect     | 
+| ------------- |:-------------| 
+| ```ls``` | List the contents of the current folder |
+| ```cd``` _folder_ | **C**hange **d**irectory into _folder_ |
+| ```cd ..``` | Change into the parent folder of the current folder |
+| ```cd``` | ```cd``` without argument changes back to the user's home folder (/home/pi) |
+| ```pwd``` | **P**resent **w**orking **d**irectory. This prints out the location of the current folder. |
+| ```python3``` _program.py_ | Run the program called _program.py_ in Python 3 |
+
+Hint: You can use tab completion. For example, when typing ```cd```+<kbd>Tab</kbd>, the Terminal automatically lists all possible folders that are available for changing into.
+
+Long story short - the Terminal is much like a text-based file explorer, bolted together with a powerful general "command centre" for your computer. You can also start the usual programs from within the terminal. Just type ```chromium```+<kbd>Enter</kbd>.
+
+## SSH: Secure Socket Shell
+
+Raspberry Pis are great for electronics projects - they're quick and easy to use and can be set up to work headless i.e. they can work without a screen. Although this is a little more difficult to work with it makes it great when we want to update code on the Raspberry Pi while it is buried in the middle of our projects. To access our pi without a screen we can use SSH, which forms a secure connection between your device and the pi and provides you access to the command line on the Raspberry Pi.
+
+Normally you can connect to a pi over SSH that is on the same network, for example at home if your pi is connected to your wifi and so is your laptop, you can connect to it over SSH by simply typing ssh pi@PI_IP_ADDRESS in a terminal (Linux/Mac) or using a program like PuTTy (windows).
+
+In our case there are some further difficulties as we do not know the IP address of the pi on the Imperial-WPA network hence we are using the Raspberry Pi as a Wireless Access Point (WAP). This allows us to connect directly to the raspberry pi like we connect to a wifi network. Each of you will be given a pi with a number on top, dictating the wifi SSID to connect to.
+
+Now connect up the 5V power adapter to the pi and turn it on. A red light should come on and a flashing green light. After roughly 20 seconds the Raspberry pi will have completed booting. Now see on your laptops wifi connection - has the raspberry pi SSID shown up? For example for the Raspberry Pi labelled 01 there should be a wifi connection called ```H2Pi01``` that you can connect to. Try connecting to this connection. The password is ```Horizons2```.
+
+If you can connect to it you should be able to also SSH into the raspberry pi now. Try the following instructions:
+
+### Linux/Mac:
+
+Open a terminal and type in ```SSH pi@192.168.4.1```. If it asks you if you want to continue connecting then please type ```yes```+<kbd>Enter</kbd>. If it asks you for a password then try the default rapsberry pi password ```raspberry```.
+
+### Windows:
+
+Download PuTTy, an SSH and telnet client [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). After you have downloaded and installed PuTTy, try running it and you should be met with a screen as below:
+
+<p align="center">
+    <img src="images/PuTTy.png" alt="PuTTy: an SSH and telnet client" width="600">
+    <figcaption align="center">PuTTy: an SSH and telnet client</figcaption>
+</p>
+
+On the left hand bar select Session and fill in the details as follows: 
+
+```
+Hostname (or ip address):192.168.4.1
+Port:22
+Connection Type:SSH
+```
+
+You can even save this configuration so you can pull it up next time instead of typing it all out again. Now click ```Open``` and you should be met with a black terminal screen and you may get a popup asking if you are sure to connect. Click Yes. On the black terminal screen you will get a prompt for the login details:
+
+```
+login as: pi
+password: raspberry
+```
+
+If all goes well you should be met with the screen below:
+
+<p align="center">
+    <img src="images/successful_connection.png" alt="Successfully SSH raspberry pi" width="600">
+    <figcaption align="center">Successfully SSH raspberry pi</figcaption>
+</p>
+
+## Working with files on the Pi
+
+As you know we do not have a screen connected to the Raspberry Pi right now, which may confuse some of you for the next bit. Lets say we wanted to write some code and run it on the Pi. How would we do this? There are two ways we can use here, either we write the file on our own laptops in a text editor and copy it over, or we write it directly on the pi in the terminal. 
+
+### Copying a file over to the Raspberry Pi
+
+As some of you may find it is nicer to work within a known code editor that you are comfortable with. Once you have made this file on your laptop you can then copy this over to the Raspberry Pi and run it. So lets try this, create a simple text file called test_file.txt on the Desktop on your laptop.
+
+Now lets copy your file over to the Raspberry Pi. We can do this using SCP (Secure File Copy). Don't forget to connet to your RPi network again before trying the next steps.
+
+If you are using Mac/Linux then you do not require any extra software. Simply open a terminal and change directory to the Desktop and type:
+
+```scp test_file.txt pi@192.168.4.1:/home/pi/Desktop```
+
+If you are using Windows then you will need the program PuTTy which we mentioned in the previous lesson. You can download it [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Download the MSI('Windows Installer') and install it.
+
+Once you have installed PuTTy you can open the command prompt in Windows and change directory to the Desktop. Now use the pscp command to transfer the file.
+
+```pscp -scp test_file.txt pi@192.168.4.1:/home/pi/Desktop```
+
+Now if you ssh into your Raspberry Pi and list the files in the Desktop folder you will see your text file has been copied across!
+
+### Using a file editor on the Raspberry Pi
+
+If you wanted you could also create and edit a file directly on the RPi. Lets try this. First SSH into the RPi:
+
+```ssh pi@192.168.4.1```
+
+Then change directory to the Desktop folder. Now we are going to use one of the built in file editors for Linux systems called Nano. It is a very nice and easy terminal text editor. So to run it type:
+
+```nano test_file.txt```
+
+This will open a text editor in your terminal as shown below:
+
+<p align="center">
+    <img src="images/nano_terminal.PNG" alt="Nano in the terminal" width="800">
+    <figcaption align="center">Nano in the terminal</figcaption>
+</p>
+
+Note that within this text editor you cannot just click where you want to go but have to move there using the keypad on your keyboard. Then you can type whatever you need so lets try typing ```Hello World!``` at the top of the file and to exit you click <kbd>CTRL</kbd>+<kbd>X</kbd> on your keyboard. Click <kbd>y</kbd> and <kbd>Enter</kbd> to save it under the same file name.
+
+
+
+
+
+
 However, before we get to that, we need to learn the basics of Python programming.
