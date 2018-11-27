@@ -349,31 +349,6 @@ As programmers, we set up “paths” for the program to follow. Can you tell th
 <img src="images/Flow1.png" alt="pin" width="90">
 </p>
 
-## Conditional statements
-
-Conditional statements allow the program to react to new information _whilst it is running_ ("at runtime").
-
-We use the `if (...):`-`elif (...):`-`else:` construct for this scenario. For example &ndash;
-
-```python
-weight = input("Please input your weight in kg: ")
-height = input("Please input your height in m: ")
-# Need to convert strings to actual number types, using the float(...) function
-bmi = float(weight) / float(height) ** 2
-if (bmi >=16 and bmi < 18.5):
-    print("Your BMI looks a bit low (underweight).")
-elif (bmi >= 18.5 and bmi < 25):
-    print("Your BMI is considered healthy.")
-elif (bmi >= 25 and bmi < 30):
-    print("Your BMI looks a bit large (overweight).")
-else:
-    print("According to your BMI, you are severely over- or underweight.")
-```
-
-Two important points to remember:
-1. **Code blocks that are executed inside an `if`/`elif`/`else` statement are indented with a tab. This is Python's way to group code into blocks.**
-2. **These code blocks start after a colon and end when the indentation stops.**
-
 ## Repeating code: Loops
 
 Often, we need an action to be repeated. One way to achieve this is to use a `while` loop:
@@ -386,6 +361,10 @@ while (count < 9):
 print "Goodbye!"
 ```
 
+Two important points to remember:
+1. **Code blocks that are executed inside an `if`/`elif`/`else` statement are indented with a tab. This is Python's way to group code into blocks.**
+2. **These code blocks start after a colon and end when the indentation stops.**
+
 To run through a list of things, we can use a `for` loop:
 
 ```python
@@ -393,72 +372,6 @@ my_numbers = [1,2,3,4,5]
 for number in my_numbers:
     print(number ** 2)
 ```
-
-## Functions
-
-Functions enable you to "recycle" blocks of related code at different places in your program.
-
-A function is a block of organised, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
-
-```python
-# Import a maths library for accessing the value of pi
-import numpy as np
-
-# Function that calculates the area of a circle from its radius
-def get_area(radius):
-    area = np.pi * radius ** 2
-    return area
-
-radii = [1, 2, 3, 4, 5, 6]
-
-for radius in radii:
-    area = get_area(radius)
-    print("The area of a circle of radius " + radius +
-          " cm is " + area + " cm^2.")
-print "Done."
-```
-
-Functions are _defined_ using the `def` keyword, followed by the function name, and any arguments in brackets. Functions return a value using the `return` keyword.
-
-## User input
-
-The following python code accepts user input and stores it in the variable `my_number`.
-
-```python
-my_number = ''
-my_number = input('Please tell me a number! ')
-if (my_number == '42'):
-    print('Amazing. You\'re on to something!')
-else:
-    print('That\'s a lovely number.')
-```
-
-**The output of the `input()` function is always a string, even if you input `'42'`. You need to change the type of this variable to `number` first if you want to "do maths" with it later. For this, use the `int()` or `float()` function, for example by calling `my_number = int(my_number)`.**
-
-## When things don't go to plan
-
-When your program has run down a dead end, Python does its best to help you out of it, by printing out a help message into the Terminal.
-
-Consider the following program:
-
-```python
-my_number = input("Please input a number: ")
-output = my_number / 2
-print(output)
-```
-
-Saving it as `test.py` and executing (inside the same folder where you saved it!) `python3 test.py`, the following will happen, assuming the user inputs "25" and presses <kbd>Enter</kbd>:
-
-```bash
-pi@raspberrypi ~ $ python3 test.py
-Please input a number: 25
-Traceback (most recent call last):
-  File "test.py", line 2, in <module>
-    output = my_number / 2
-TypeError: unsupported operand type(s) for /: 'str' and 'int'
-```
-
-Can someone explain what this "Traceback" is complaining about, and how to correct it?
 
 # Physical Computing and the gpiozero library
 
@@ -555,6 +468,93 @@ while True:
 
 Note how we also imported the `time` library to allow the program to sleep for one second.
 
+## Conditional statements
+
+Conditional statements allow the program to react to new information _whilst it is running_ ("at runtime").
+
+We use the `if (...):`-`elif (...):`-`else:` construct for this scenario. For example &ndash;
+
+```python
+weight = input("Please input your weight in kg: ")
+height = input("Please input your height in m: ")
+# Need to convert strings to actual number types, using the float(...) function
+bmi = float(weight) / float(height) ** 2
+if (bmi >=16 and bmi < 18.5):
+    print("Your BMI looks a bit low (underweight).")
+elif (bmi >= 18.5 and bmi < 25):
+    print("Your BMI is considered healthy.")
+elif (bmi >= 25 and bmi < 30):
+    print("Your BMI looks a bit large (overweight).")
+else:
+    print("According to your BMI, you are severely over- or underweight.")
+```
+
+## Functions
+
+Functions enable you to "recycle" blocks of related code at different places in your program.
+
+A function is a block of organised, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
+
+```python
+# Import a maths library for accessing the value of pi
+import numpy as np
+
+# Function that calculates the area of a circle from its radius
+def get_area(radius):
+    area = np.pi * radius ** 2
+    return area
+
+radii = [1, 2, 3, 4, 5, 6]
+
+for radius in radii:
+    area = get_area(radius)
+    print("The area of a circle of radius " + radius +
+          " cm is " + area + " cm^2.")
+print "Done."
+```
+
+Functions are _defined_ using the `def` keyword, followed by the function name, and any arguments in brackets. Functions return a value using the `return` keyword.
+
+## User input
+
+The following python code accepts user input and stores it in the variable `my_number`.
+
+```python
+my_number = ''
+my_number = input('Please tell me a number! ')
+if (my_number == '42'):
+    print('Amazing. You\'re on to something!')
+else:
+    print('That\'s a lovely number.')
+```
+
+**The output of the `input()` function is always a string, even if you input `'42'`. You need to change the type of this variable to `number` first if you want to "do maths" with it later. For this, use the `int()` or `float()` function, for example by calling `my_number = int(my_number)`.**
+
+## When things don't go to plan
+
+When your program has run down a dead end, Python does its best to help you out of it, by printing out a help message into the Terminal.
+
+Consider the following program:
+
+```python
+my_number = input("Please input a number: ")
+output = my_number / 2
+print(output)
+```
+
+Saving it as `test.py` and executing (inside the same folder where you saved it!) `python3 test.py`, the following will happen, assuming the user inputs "25" and presses <kbd>Enter</kbd>:
+
+```bash
+pi@raspberrypi ~ $ python3 test.py
+Please input a number: 25
+Traceback (most recent call last):
+  File "test.py", line 2, in <module>
+    output = my_number / 2
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+```
+
+Can someone explain what this "Traceback" is complaining about, and how to correct it?
+
 ### Dimming an LED
 
 Keep the same connection, and run the below code. Note how we use the PWMLED object to control the LED. PWM stands for [**P**ulse **W**idth **M**odulation](https://www.arduino.cc/en/Tutorial/PWM), which rapidly blinks the LED and controls its brightness by switching it on and off for different amounts of times.
@@ -611,7 +611,9 @@ And thats it! Its installed now and we can start using the library. Try going to
 
 ```
 cd examples
-python RobotTest.py
+python DCTest.py
 ```
 
 To close the program type <kbd>CTRL</kbd>+<kbd>C</kbd>.
+
+Find out more about the motorHAT and how to use stepper motors go [here](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/overview).
