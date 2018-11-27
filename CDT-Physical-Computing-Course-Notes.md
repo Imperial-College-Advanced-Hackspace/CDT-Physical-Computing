@@ -38,10 +38,10 @@ However, what will make it interesting for us is its capability for use in elect
 Since its original launch in 2012 there have been a number of different models with the most recent model having a quad core processor runnning at 1.4GHz and with 1GB of RAM.
 
 <p align="center">
-    <img src="images/rpimodels.png" alt="The Raspberry Pi (version 3)" width="600">
+    <img src="images/rpimodels.PNG" alt="The Raspberry Pi (version 3)" width="600">
 </p>
 <p align="center">
-    <img src="images/rpimodelscompute.png" alt="The Raspberry Pi (version 3)" width="600">
+    <img src="images/rpimodelscompute.PNG" alt="The Raspberry Pi (version 3)" width="600">
     <figcaption align="center">Different Raspberry Pi models through the years</figcaption>
 </p>
 
