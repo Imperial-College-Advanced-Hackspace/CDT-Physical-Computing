@@ -77,12 +77,12 @@ Your Raspberry Pi is more than just a small computer; it is a hardware prototypi
 As we saw above, the GPIO is arranged as a header of 40 electrical pins, which makes it easy to connect it with an external circuit, using jumper wires.
 
 <p align="center">
-    <img src="images/rpi_new_pin.jpg" alt="The Raspberry Pi (version 3)" width="600">
+    <img src="images/rpi_new_pin.jpg" alt="The Raspberry Pi (version 3)" width="300">
     <figcaption align="center">Raspberry Pi GPIO Orientation</figcaption>
 </p>
 
 <p align="center">
-    <img src="images/RPi_pin_layout.svg" alt="The Raspberry Pi (version 3)" width="600">
+    <img src="images/RPi_pin_layout.svg" alt="The Raspberry Pi (version 3)" width="300">
     <figcaption align="center">Raspberry Pi GPIO Layout</figcaption>
 </p>
 
