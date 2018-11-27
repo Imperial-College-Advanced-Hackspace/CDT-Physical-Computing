@@ -16,8 +16,6 @@ Welcome to this tutorial about the Raspberry Pi microcomputer and its amazing ca
 
 It may also be useful as a reference during our hackathon.
 
-We will work through this sheet as follows. For each of the following chapters, the tasks are grouped into **ascending order of difficulty**. Please attempt all tasks under **Mandatory exercises**, and if you have time before we move on, have fun with the **Optional exercises**.
-
 **One plea**: If you are done earlier than your neighbour, please help us out by offering your help to them. Explaining something is a sure-fire way to really understand it yourself!
 
 # An Overview of the Raspberry Pi (RPi)
